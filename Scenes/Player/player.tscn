@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://08bwi7utoy6i"]
+
+[ext_resource type="Script" path="res://scenes/Player/player.gd" id="1_qtbhr"]
+[ext_resource type="Texture2D" uid="uid://bg6aig3twqkf1" path="res://Assets/Sprites/player_idle.png" id="1_unjrf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sx1ct"]
+size = Vector2(41, 40)
+
+[node name="Player" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_qtbhr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_unjrf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_sx1ct")
+
+[node name="Shooting" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
+
+[node name="Dash" type="Node2D" parent="."]
+
+[node name="Reload" type="Timer" parent="Dash"]
+wait_time = 0.4
+one_shot = true
+
+[node name="SpeedIncrease" type="Timer" parent="Dash"]
+wait_time = 0.1
+
+[connection signal="timeout" from="Shooting" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Dash/Reload" to="." method="_on_dashing_timeout"]
+[connection signal="timeout" from="Dash/SpeedIncrease" to="." method="_on_speed_increase_timeout"]

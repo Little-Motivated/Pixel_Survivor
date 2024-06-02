@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://b10t1cm8umw8i"]
+
+[ext_resource type="Script" path="res://Scenes/Enemies/triangle.gd" id="1_6xbt1"]
+[ext_resource type="Texture2D" uid="uid://dai625c5w8sow" path="res://Assets/Sprites/Enemies/triangle.png" id="1_muqqv"]
+
+[node name="Triangle" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_6xbt1")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Triangle1" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("1_muqqv")
+offset = Vector2(0, -22.37)
+
+[node name="Triangle2" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("1_muqqv")
+offset = Vector2(0, -22.37)
+
+[node name="Triangle3" type="Sprite2D" parent="Sprites"]
+texture = ExtResource("1_muqqv")
+offset = Vector2(0, -22.37)
+
+[node name="Tr1" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-138.75, 82.5, 138.75, 82.5, 0, -157.5)
+
+[node name="Tr2" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-138.75, 82.5, 138.75, 82.5, 0, -157.5)
+
+[node name="Tr3" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-138.75, 82.5, 138.75, 82.5, 0, -157.5)
+
+[node name="Reload" type="Timer" parent="."]
+wait_time = 0.1
+
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]

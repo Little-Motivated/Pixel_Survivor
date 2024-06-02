@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct1x16rkglcpk"]
+
+[ext_resource type="Texture2D" uid="uid://33l2k6o5ndcs" path="res://Assets/Sprites/Bullets/bullet_triangle.png" id="1_5y08l"]
+[ext_resource type="Script" path="res://Scenes/Bullets/bullet_triangle.gd" id="1_7jag4"]
+
+[node name="BulletTriangle" type="Area2D"]
+script = ExtResource("1_7jag4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_5y08l")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-24, 13, 0, -26, 24, 13)
